@@ -1,0 +1,119 @@
+[
+  {
+    "id": "2ef0114e-6fb6-4c4f-951c-3c2e12176379",
+    "name": "John Smith",
+    "source": "web_form",
+    "stage": "new",
+    "priority": "high",
+    "score": 75,
+    "contact_info": {
+      "email": "john.smith@acme.com",
+      "phone": "+1-555-0101",
+      "company": "Acme Corporation",
+      "title": "Marketing Director"
+    },
+    "tags": [
+      "enterprise",
+      "hot-lead",
+      "complete-profile"
+    ],
+    "product_interest": "Enterprise Plan",
+    "estimated_value": 50000.0,
+    "utm_source": "google",
+    "utm_medium": "cpc",
+    "utm_campaign": "enterprise-q1",
+    "notes": "Interested in demo next week",
+    "created_at": "2025-11-11T04:14:45.246098"
+  },
+  {
+    "id": "7a7046a6-dfe7-4106-9a76-67d1c58ba657",
+    "name": "Sarah Johnson",
+    "source": "referral",
+    "stage": "contacted",
+    "priority": "urgent",
+    "score": 85,
+    "contact_info": {
+      "email": "sarah.j@techstart.io",
+      "phone": "+1-555-0102",
+      "company": "TechStart",
+      "title": "CEO"
+    },
+    "tags": [
+      "enterprise",
+      "hot-lead",
+      "high-quality",
+      "complete-profile"
+    ],
+    "product_interest": "Custom Enterprise Solution",
+    "estimated_value": 120000.0,
+    "notes": "Referred by current client. Very interested.",
+    "created_at": "2025-11-09T04:14:45.246129"
+  },
+  {
+    "id": "f7c0c5a2-0b3e-40a4-aeb1-bc435accc5b9",
+    "name": "Mike Chen",
+    "source": "google_ads",
+    "stage": "qualified",
+    "priority": "high",
+    "score": 68,
+    "contact_info": {
+      "email": "m.chen@startup.com",
+      "phone": "+1-555-0103",
+      "company": "Startup Inc"
+    },
+    "tags": [
+      "mid-market",
+      "warm-lead",
+      "paid-traffic"
+    ],
+    "product_interest": "Professional Plan",
+    "estimated_value": 25000.0,
+    "utm_source": "google",
+    "utm_medium": "cpc",
+    "utm_campaign": "pro-plan-q1",
+    "created_at": "2025-11-06T04:14:45.246143"
+  },
+  {
+    "id": "bcc83608-87d4-41f8-92f7-5885cfc66be7",
+    "name": "Emily Rodriguez",
+    "source": "event",
+    "stage": "proposal",
+    "priority": "urgent",
+    "score": 92,
+    "contact_info": {
+      "email": "emily.r@bigcorp.com",
+      "phone": "+1-555-0104",
+      "company": "BigCorp Industries",
+      "title": "VP of Sales"
+    },
+    "tags": [
+      "enterprise",
+      "hot-lead",
+      "high-quality",
+      "demo-request"
+    ],
+    "product_interest": "Enterprise + Custom Integration",
+    "estimated_value": 200000.0,
+    "notes": "Met at tech conference. Demo completed, waiting for proposal.",
+    "created_at": "2025-11-01T04:14:45.246153"
+  },
+  {
+    "id": "208644e6-c333-4393-8155-4737429ace53",
+    "name": "David Kim",
+    "source": "landing_page",
+    "stage": "new",
+    "priority": "medium",
+    "score": 45,
+    "contact_info": {
+      "email": "david@smallbiz.com",
+      "company": "Small Business Solutions"
+    },
+    "tags": [
+      "smb",
+      "warm-lead"
+    ],
+    "product_interest": "Basic Plan",
+    "estimated_value": 5000.0,
+    "created_at": "2025-11-10T22:14:45.246161"
+  }
+]

@@ -1,0 +1,36 @@
+[
+  {
+    "id": "343351c1-30c9-483d-8b17-25cdb337130d",
+    "lead_id": "2ef0114e-6fb6-4c4f-951c-3c2e12176379",
+    "title": "Initial contact call",
+    "description": "Call to introduce our services",
+    "task_type": "call",
+    "status": "pending",
+    "priority": "high",
+    "due_date": "2025-11-11T08:14:45.246174",
+    "reminder_at": "2025-11-11T06:14:45.246185",
+    "created_at": "2025-11-11T04:14:45.246190"
+  },
+  {
+    "id": "300a34d9-ddff-4b47-9c66-87b299f9170a",
+    "lead_id": "7a7046a6-dfe7-4106-9a76-67d1c58ba657",
+    "title": "Follow up on demo",
+    "description": "Check if they have any questions after the demo",
+    "task_type": "follow_up",
+    "status": "pending",
+    "priority": "urgent",
+    "due_date": "2025-11-12T04:14:45.246207",
+    "created_at": "2025-11-10T04:14:45.246212"
+  },
+  {
+    "id": "a95457dc-eb46-4710-95b6-3e86afaa2c8f",
+    "lead_id": "bcc83608-87d4-41f8-92f7-5885cfc66be7",
+    "title": "Send proposal document",
+    "description": "Prepare and send detailed proposal with pricing",
+    "task_type": "proposal",
+    "status": "in_progress",
+    "priority": "urgent",
+    "due_date": "2025-11-11T16:14:45.246219",
+    "created_at": "2025-11-09T04:14:45.246224"
+  }
+]
