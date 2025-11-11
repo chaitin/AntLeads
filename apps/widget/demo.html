@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AntLeads Widget Demo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      color: white;
+      margin-bottom: 60px;
+    }
+
+    header h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 20px;
+      opacity: 0.95;
+    }
+
+    .demo-section {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .demo-section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #1a202c;
+    }
+
+    .demo-section p {
+      font-size: 16px;
+      color: #4a5568;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .feature {
+      padding: 24px;
+      background: #f7fafc;
+      border-radius: 8px;
+      border-left: 4px solid #667eea;
+    }
+
+    .feature h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: #2d3748;
+    }
+
+    .feature ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .feature li {
+      padding: 6px 0;
+      color: #4a5568;
+    }
+
+    .feature li:before {
+      content: "✓ ";
+      color: #667eea;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    .code-block {
+      background: #1a202c;
+      color: #e2e8f0;
+      padding: 24px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+
+    .code-block pre {
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .code-block code {
+      color: #68d391;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: #667eea;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #667eea;
+      border: 2px solid #667eea;
+    }
+
+    .btn-secondary:hover {
+      background: #f7fafc;
+    }
+
+    .integration-steps {
+      counter-reset: step;
+      margin: 30px 0;
+    }
+
+    .step {
+      counter-increment: step;
+      padding: 20px;
+      margin-bottom: 20px;
+      background: #f7fafc;
+      border-radius: 8px;
+      position: relative;
+      padding-left: 70px;
+    }
+
+    .step:before {
+      content: counter(step);
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      width: 36px;
+      height: 36px;
+      background: #667eea;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .step h3 {
+      margin-bottom: 10px;
+      color: #2d3748;
+    }
+
+    footer {
+      text-align: center;
+      color: white;
+      margin-top: 60px;
+      opacity: 0.9;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🐜 AntLeads Widget</h1>
+      <p>Powerful lead collection widget for any website</p>
+    </header>
+
+    <div class="demo-section">
+      <h2>What is AntLeads Widget?</h2>
+      <p>
+        AntLeads Widget is an embeddable JavaScript widget that enables you to collect leads from any website.
+        With just a single line of code, you can add a beautiful, customizable contact form that appears as a
+        floating button or can be triggered from any element on your page.
+      </p>
+      <p>
+        All submissions are automatically scored by our AI engine, tagged, and added to your lead pipeline
+        with intelligent routing and follow-up automation.
+      </p>
+
+      <div class="features">
+        <div class="feature">
+          <h3>Easy Integration</h3>
+          <ul>
+            <li>Single script tag</li>
+            <li>No dependencies</li>
+            <li>Works on any website</li>
+            <li>5-minute setup</li>
+          </ul>
+        </div>
+
+        <div class="feature">
+          <h3>Customizable</h3>
+          <ul>
+            <li>Custom colors & branding</li>
+            <li>Configurable form fields</li>
+            <li>Position control</li>
+            <li>Custom messages</li>
+          </ul>
+        </div>
+
+        <div class="feature">
+          <h3>Smart Features</h3>
+          <ul>
+            <li>AI-powered lead scoring</li>
+            <li>Automatic tagging</li>
+            <li>UTM tracking</li>
+            <li>Auto-open options</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>How to Integrate</h2>
+
+      <div class="integration-steps">
+        <div class="step">
+          <h3>Create a Widget</h3>
+          <p>Log into your AntLeads dashboard, go to the Widgets page, and create a new widget. Customize the appearance, form fields, and behavior to match your needs.</p>
+        </div>
+
+        <div class="step">
+          <h3>Get Your Embed Code</h3>
+          <p>After creating the widget, copy the provided embed code. It looks like this:</p>
+          <div class="code-block">
+            <pre><code>&lt;script src="http://localhost:8000/static/widget.js"
+        data-widget-id="wgt_YOUR_WIDGET_ID"&gt;&lt;/script&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="step">
+          <h3>Add to Your Website</h3>
+          <p>Paste the embed code into your website's HTML, just before the closing &lt;/body&gt; tag. The widget will automatically appear as a floating button.</p>
+        </div>
+
+        <div class="step">
+          <h3>Start Collecting Leads!</h3>
+          <p>That's it! Your widget is now live. All form submissions will appear in your AntLeads dashboard with AI scoring and automatic follow-up tasks.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Advanced Usage</h2>
+
+      <h3>Bind to Custom Element</h3>
+      <p>You can bind the widget to any button or div on your page:</p>
+      <div class="code-block">
+        <pre><code>&lt;button id="contact-button"&gt;Contact Us&lt;/button&gt;
+
+&lt;script src="http://localhost:8000/static/widget.js"
+        data-widget-id="wgt_YOUR_WIDGET_ID"
+        data-bind-to="#contact-button"&gt;&lt;/script&gt;</code></pre>
+      </div>
+
+      <h3>Programmatic Control</h3>
+      <p>Control the widget programmatically using the JavaScript API:</p>
+      <div class="code-block">
+        <pre><code>// Open the widget
+window.AntLeadsWidget.open();
+
+// Close the widget
+window.AntLeadsWidget.close();
+
+// Check if widget is open
+if (window.AntLeadsWidget.isOpen()) {
+  console.log('Widget is currently open');
+}</code></pre>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Configuration Options</h2>
+      <p>When creating a widget in the dashboard, you can configure:</p>
+      <ul style="list-style: none; padding-left: 0;">
+        <li style="padding: 8px 0; color: #4a5568;">📝 <strong>Form Fields:</strong> name, email, phone, company, message</li>
+        <li style="padding: 8px 0; color: #4a5568;">🎨 <strong>Styling:</strong> primary color, button position (top/bottom, left/right)</li>
+        <li style="padding: 8px 0; color: #4a5568;">💬 <strong>Messages:</strong> form title, description, submit button text, success message</li>
+        <li style="padding: 8px 0; color: #4a5568;">⚙️ <strong>Behavior:</strong> auto-open on page load, delay time</li>
+      </ul>
+    </div>
+
+    <div class="demo-section">
+      <h2>Try It Now</h2>
+      <p>Click the button below to see the widget in action! (Make sure you have a widget created in your dashboard first)</p>
+      <div class="cta-buttons">
+        <button class="btn btn-primary" onclick="openDemo()">Open Demo Widget</button>
+        <a href="http://localhost:3000/widgets" class="btn btn-secondary">Go to Dashboard</a>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 AntLeads. Built with ❤️ for lead generation.</p>
+      <p><a href="http://localhost:3000">Dashboard</a> | <a href="http://localhost:8000/docs">API Docs</a></p>
+    </footer>
+  </div>
+
+  <!-- Example widget embed (replace with your actual widget ID) -->
+  <!-- <script src="http://localhost:8000/static/widget.js" data-widget-id="wgt_YOUR_WIDGET_ID"></script> -->
+
+  <script>
+    function openDemo() {
+      alert('To see the demo:\n\n1. Create a widget in the dashboard\n2. Copy the embed code\n3. Replace the commented script tag at the bottom of this HTML file with your widget code\n4. Refresh the page\n\nThe floating button will appear automatically!');
+    }
+  </script>
+</body>
+</html>

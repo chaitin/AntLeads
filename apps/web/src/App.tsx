@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import { LayoutDashboard, Users, CheckSquare, TrendingUp } from 'lucide-react'
+import { LayoutDashboard, Users, CheckSquare, TrendingUp, Code } from 'lucide-react'
 import Dashboard from './pages/Dashboard'
 import LeadsPage from './pages/LeadsPage'
 import TasksPage from './pages/TasksPage'
 import FunnelPage from './pages/FunnelPage'
+import WidgetsPage from './pages/WidgetsPage'
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
                 <NavLink to="/funnel" icon={<TrendingUp size={18} />}>
                   Funnel
                 </NavLink>
+                <NavLink to="/widgets" icon={<Code size={18} />}>
+                  Widgets
+                </NavLink>
               </div>
             </div>
           </div>
@@ -40,6 +44,7 @@ function App() {
             <Route path="/leads" element={<LeadsPage />} />
             <Route path="/tasks" element={<TasksPage />} />
             <Route path="/funnel" element={<FunnelPage />} />
+            <Route path="/widgets" element={<WidgetsPage />} />
           </Routes>
         </main>
       </div>

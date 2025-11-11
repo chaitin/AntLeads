@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     DEBUG: bool = False
 
     # CORS
-    CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:5173"]
+    CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:5173", "*"]
 
     # Database
     DATABASE_URL: str = "sqlite+aiosqlite:///./antleads.db"

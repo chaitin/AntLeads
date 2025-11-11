@@ -2,7 +2,7 @@
 from datetime import datetime
 from uuid import uuid4
 
-from sqlalchemy import JSON, Column, DateTime, Enum, Float, ForeignKey, Integer, String, Text
+from sqlalchemy import JSON, Boolean, Column, DateTime, Enum, Float, ForeignKey, Integer, String, Text
 from sqlalchemy.dialects.postgresql import UUID as PGUUID
 from sqlalchemy.orm import relationship
 
@@ -93,3 +93,37 @@ class LeadTagORM(Base):
     color = Column(String(7), nullable=False, default="#6B7280")
     description = Column(Text, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+
+class WidgetORM(Base):
+    """Widget configuration ORM model."""
+
+    __tablename__ = "widgets"
+
+    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid4)
+    name = Column(String(100), nullable=False)
+    widget_id = Column(String(50), nullable=False, unique=True, index=True)
+    api_key = Column(String(100), nullable=False)
+
+    # Form configuration
+    title = Column(String(200), nullable=False, default="Get in Touch")
+    description = Column(Text, nullable=True)
+    submit_button_text = Column(String(50), nullable=False, default="Submit")
+    success_message = Column(Text, nullable=False, default="Thank you! We'll be in touch soon.")
+
+    # Fields configuration (stored as JSON array)
+    fields = Column(JSON, nullable=False, default=list)
+
+    # Styling
+    primary_color = Column(String(7), nullable=False, default="#3b82f6")
+    button_position = Column(String(20), nullable=False, default="bottom-right")
+
+    # Behavior
+    auto_open = Column(Boolean, nullable=False, default=False)
+    auto_open_delay = Column(Integer, nullable=False, default=5)
+
+    # Metadata
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+    is_active = Column(Boolean, nullable=False, default=True)
+

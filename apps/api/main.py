@@ -3,10 +3,11 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from apps.api.config import settings
 from apps.api.database import init_db
-from apps.api.routes import automation, funnel, leads, tasks
+from apps.api.routes import automation, funnel, leads, tasks, widgets
 
 
 @asynccontextmanager
@@ -40,6 +41,10 @@ app.include_router(leads.router, prefix="/api/v1/leads", tags=["leads"])
 app.include_router(tasks.router, prefix="/api/v1/tasks", tags=["tasks"])
 app.include_router(funnel.router, prefix="/api/v1/funnel", tags=["funnel"])
 app.include_router(automation.router, prefix="/api/v1/automation", tags=["automation"])
+app.include_router(widgets.router, prefix="/api/v1/widgets", tags=["widgets"])
+
+# Serve widget static files
+app.mount("/static", StaticFiles(directory="apps/widget/src"), name="static")
 
 
 @app.get("/")
