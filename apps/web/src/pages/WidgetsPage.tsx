@@ -32,7 +32,7 @@ const WidgetsPage: React.FC = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
-    const fields = formData.get('fields')?.toString().split(',').map(f => f.trim()) || ['name', 'email', 'phone', 'company', 'message'];
+    const fields = formData.get('fields')?.toString().split(',').map(f => f.trim()) || ['name', 'email', 'phone', 'company', 'estimated_value', 'message'];
 
     const data: WidgetCreateRequest = {
       name: formData.get('name') as string,
@@ -57,7 +57,7 @@ const WidgetsPage: React.FC = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Widgets</h1>
         <button
@@ -128,9 +128,10 @@ const WidgetsPage: React.FC = () => {
                 <h2 className="text-xl font-bold">Create Widget</h2>
                 <button
                   onClick={() => setShowModal(false)}
-                  className="text-gray-500 hover:text-gray-700 text-2xl"
+                  className="modal-close-icon"
+                  aria-label="Close modal"
                 >
-                  &times;
+                  ×
                 </button>
               </div>
 
@@ -167,6 +168,7 @@ const WidgetsPage: React.FC = () => {
                     />
                   </div>
 
+  
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium mb-1">Submit Button Text</label>
@@ -205,11 +207,11 @@ const WidgetsPage: React.FC = () => {
                       type="text"
                       name="fields"
                       className="w-full px-3 py-2 border rounded"
-                      defaultValue="name,email,phone,company,message"
-                      placeholder="name,email,phone,company,message"
+                      defaultValue="name,email,phone,company,estimated_value,message"
+                      placeholder="name,email,phone,company,estimated_value,message"
                     />
                     <p className="text-xs text-gray-500 mt-1">
-                      Available: name, email, phone, company, message
+                      Fields visitors will fill out: name, email, phone, company, estimated_value (budget), message
                     </p>
                   </div>
 
@@ -282,9 +284,10 @@ const WidgetsPage: React.FC = () => {
               <h2 className="text-xl font-bold">Widget Embed Code</h2>
               <button
                 onClick={() => setSelectedWidget(null)}
-                className="text-gray-500 hover:text-gray-700 text-2xl"
+                className="modal-close-icon"
+                aria-label="Close modal"
               >
-                &times;
+                ×
               </button>
             </div>
 

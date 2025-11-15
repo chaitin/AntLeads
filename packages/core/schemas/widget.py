@@ -12,7 +12,7 @@ class WidgetCreateRequest(BaseModel):
     description: Optional[str] = Field(default="Fill out the form below and we'll get back to you soon.")
     submit_button_text: str = Field(default="Submit")
     success_message: str = Field(default="Thank you! We'll be in touch soon.")
-    fields: list[str] = Field(default=["name", "email", "phone", "company", "message"])
+    fields: list[str] = Field(default=["name", "email", "phone", "company", "estimated_value", "message"])
     primary_color: str = Field(default="#3b82f6")
     button_position: str = Field(default="bottom-right")
     auto_open: bool = Field(default=False)
@@ -44,6 +44,7 @@ class WidgetFormSubmission(BaseModel):
     phone: Optional[str] = None
     company: Optional[str] = None
     message: Optional[str] = None
+    estimated_value: Optional[float] = Field(None, description="Estimated value/budget")
     url: Optional[str] = Field(None, description="URL where form was submitted")
     referrer: Optional[str] = None
 

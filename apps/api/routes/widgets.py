@@ -152,6 +152,7 @@ async def submit_widget_form(
             company=submission.company,
         ),
         notes=submission.message,
+        estimated_value=submission.estimated_value,
         referrer_url=submission.referrer,
         utm_source="widget",
     )
@@ -173,6 +174,7 @@ async def submit_widget_form(
         },
         tags=suggested_tags,
         notes=submission.message,
+        estimated_value=submission.estimated_value,
         referrer_url=submission.referrer or submission.url,
         utm_source="widget",
         utm_medium=widget_id,

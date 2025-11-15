@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom'
 import { LayoutDashboard, Users, CheckSquare, TrendingUp, Code } from 'lucide-react'
 import Dashboard from './pages/Dashboard'
 import LeadsPage from './pages/LeadsPage'
@@ -10,14 +10,16 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-50">
-        <nav className="bg-white shadow-sm border-b border-gray-200">
+        <nav className="bg-white shadow-md border-b border-gray-200">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between h-16">
-              <div className="flex items-center gap-2">
-                <TrendingUp className="text-blue-600" size={28} />
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-blue-50 rounded-lg">
+                  <TrendingUp className="text-blue-600" size={24} />
+                </div>
                 <h1 className="text-xl font-bold text-gray-900">AntLeads</h1>
               </div>
-              <div className="flex gap-6">
+              <div className="flex gap-2">
                 <NavLink to="/" icon={<LayoutDashboard size={18} />}>
                   Dashboard
                 </NavLink>
@@ -61,10 +63,17 @@ function NavLink({
   icon: React.ReactNode
   children: React.ReactNode
 }) {
+  const location = useLocation();
+  const isActive = location.pathname === to;
+
   return (
     <Link
       to={to}
-      className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+      className={`touch-target flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 ${
+        isActive
+          ? 'text-blue-600 bg-blue-50 shadow-sm'
+          : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50 hover:shadow-sm'
+      }`}
     >
       {icon}
       {children}

@@ -125,15 +125,16 @@
     `;
 
     // Build form fields
-    const fields = config.fields || ['name', 'email', 'phone', 'company', 'message'];
+    const fields = config.fields || ['name', 'email', 'phone', 'company', 'estimated_value', 'message'];
     const formFields = fields.map(field => {
       const isTextarea = field === 'message';
       const isRequired = field === 'name' || field === 'email';
+      const isNumber = field === 'estimated_value';
 
       return `
         <div style="margin-bottom: 16px;">
           <label style="display: block; margin-bottom: 8px; font-weight: 500; color: #374151; text-transform: capitalize;">
-            ${field}${isRequired ? ' *' : ''}
+            ${field.replace('_', ' ')}${isRequired ? ' *' : ''}
           </label>
           ${isTextarea
             ? `<textarea
@@ -141,13 +142,22 @@
                  ${isRequired ? 'required' : ''}
                  rows="4"
                  style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; font-family: inherit; resize: vertical;"
-                 placeholder="Enter your ${field}..."></textarea>`
+                 placeholder="Enter your ${field.replace('_', ' ')}..."></textarea>`
+            : isNumber
+            ? `<input
+                 type="number"
+                 name="${field}"
+                 ${isRequired ? 'required' : ''}
+                 min="0"
+                 step="0.01"
+                 style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px;"
+                 placeholder="Enter your ${field.replace('_', ' ')} (e.g., 50000)" />`
             : `<input
                  type="${field === 'email' ? 'email' : field === 'phone' ? 'tel' : 'text'}"
                  name="${field}"
                  ${isRequired ? 'required' : ''}
                  style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px;"
-                 placeholder="Enter your ${field}..." />`
+                 placeholder="Enter your ${field.replace('_', ' ')}..." />`
           }
         </div>
       `;
@@ -219,6 +229,7 @@
       phone: formData.get('phone') || null,
       company: formData.get('company') || null,
       message: formData.get('message') || null,
+      estimated_value: formData.get('estimated_value') ? parseFloat(formData.get('estimated_value')) : null,
       url: window.location.href,
       referrer: document.referrer || null
     };

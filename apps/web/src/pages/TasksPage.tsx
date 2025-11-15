@@ -131,9 +131,10 @@ export default function TasksPage() {
               <h2 className="text-xl font-semibold text-gray-900">Add New Task</h2>
               <button
                 onClick={() => setShowModal(false)}
-                className="text-gray-400 hover:text-gray-600"
+                className="modal-close-icon"
+                aria-label="Close modal"
               >
-                <X size={24} />
+                ×
               </button>
             </div>
 

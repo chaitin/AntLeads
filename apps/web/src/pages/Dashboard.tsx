@@ -1,6 +1,14 @@
 import { useQuery } from '@tanstack/react-query'
 import { leadsApi, funnelApi, tasksApi } from '../services/api'
-import { TrendingUp, Users, CheckSquare, DollarSign, AlertCircle } from 'lucide-react'
+import { Users, CheckSquare, DollarSign, AlertCircle } from 'lucide-react'
+
+// Types for API responses
+interface Task {
+  id: string;
+  title: string;
+  priority: string;
+  due_date?: string;
+}
 
 export default function Dashboard() {
   const { data: stats } = useQuery({
@@ -8,10 +16,10 @@ export default function Dashboard() {
     queryFn: leadsApi.getStats,
   })
 
-  const { data: funnel } = useQuery({
-    queryKey: ['funnel'],
-    queryFn: funnelApi.get,
-  })
+  // const { data: funnel } = useQuery({
+  //   queryKey: ['funnel'],
+  //   queryFn: () => funnelApi.get(),
+  // })
 
   const { data: tasksData } = useQuery({
     queryKey: ['tasks', { status: 'pending' }],
@@ -94,7 +102,7 @@ export default function Dashboard() {
         </div>
         {tasksData?.tasks && tasksData.tasks.length > 0 ? (
           <div className="space-y-3">
-            {tasksData.tasks.map((task) => (
+            {tasksData.tasks.map((task: Task) => (
               <div
                 key={task.id}
                 className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
@@ -127,6 +135,8 @@ export default function Dashboard() {
   )
 }
 
+import { TrendingUp, TrendingDown, Minus } from 'lucide-react'
+
 function StatCard({
   icon,
   title,
@@ -138,15 +148,48 @@ function StatCard({
   value: string | number
   trend: string
 }) {
+  // Parse trend to determine direction and color
+  const getTrendIcon = (trendText: string) => {
+    if (trendText.includes('+') || trendText.includes('improving')) {
+      return <TrendingUp size={16} className="text-success" />;
+    } else if (trendText.includes('-') || trendText.includes('decrease')) {
+      return <TrendingDown size={16} className="text-danger" />;
+    }
+    return <Minus size={16} className="text-gray-400" />;
+  };
+
+  const getTrendColor = (trendText: string) => {
+    if (trendText.includes('+') || trendText.includes('improving')) {
+      return 'text-success';
+    } else if (trendText.includes('-') || trendText.includes('decrease')) {
+      return 'text-danger';
+    }
+    return 'text-gray-500';
+  };
+
+  const formatValue = (val: string | number) => {
+    if (typeof val === 'number') {
+      return val.toLocaleString();
+    }
+    return val;
+  };
+
   return (
-    <div className="card">
+    <div className="card hover:shadow-lg transition-shadow duration-300">
       <div className="flex items-start justify-between">
-        <div>
-          <p className="text-sm font-medium text-gray-600 mb-1">{title}</p>
-          <p className="text-2xl font-bold text-gray-900">{value}</p>
-          <p className="text-xs text-gray-500 mt-1">{trend}</p>
+        <div className="flex-1">
+          <p className="text-sm font-medium text-gray-600 mb-2">{title}</p>
+          <p className="text-3xl font-bold text-gray-900 mb-2">{formatValue(value)}</p>
+          <div className="flex items-center gap-2">
+            {getTrendIcon(trend)}
+            <p className={`text-sm font-medium ${getTrendColor(trend)}`}>{trend}</p>
+          </div>
         </div>
-        <div className="p-2 bg-gray-50 rounded-lg">{icon}</div>
+        <div className="p-3 bg-blue-50 rounded-lg">
+          <div className="text-blue-600">
+            {icon}
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -59,12 +59,44 @@ export default function FunnelPage() {
           <div className="text-center py-12 text-gray-500">Loading...</div>
         ) : chartData && chartData.length > 0 ? (
           <ResponsiveContainer width="100%" height={400}>
-            <BarChart data={chartData} layout="vertical">
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis type="number" />
-              <YAxis dataKey="stage" type="category" width={100} />
-              <Tooltip />
-              <Bar dataKey="count" radius={[0, 8, 8, 0]}>
+            <BarChart
+              data={chartData}
+              layout="vertical"
+              margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+              <XAxis
+                type="number"
+                tick={{ fill: '#6b7280', fontSize: 12 }}
+                tickLine={{ stroke: '#e5e7eb' }}
+              />
+              <YAxis
+                dataKey="stage"
+                type="category"
+                width={100}
+                tick={{ fill: '#6b7280', fontSize: 12 }}
+                tickLine={{ stroke: '#e5e7eb' }}
+              />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: 'white',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '8px',
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                }}
+                labelStyle={{
+                  fontWeight: 600,
+                  color: '#111827',
+                  marginBottom: '4px'
+                }}
+              />
+              <Bar
+                dataKey="count"
+                radius={[0, 8, 8, 0]}
+                animationDuration={800}
+                animationBegin={100}
+                animationEasing="ease-out"
+              >
                 {chartData.map((entry, index) => {
                   const stageKey = data?.stages[index].stage as keyof typeof colors
                   return <Cell key={`cell-${index}`} fill={colors[stageKey] || '#6b7280'} />
