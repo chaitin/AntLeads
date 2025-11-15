@@ -1,7 +1,9 @@
 """Core business models package."""
 
-from packages.core.models.lead import ContactInfo, Lead, LeadPriority, LeadSource, LeadStage
-from packages.core.models.task import Task, TaskPriority, TaskStatus, TaskType
+from .lead import ContactInfo, Lead, LeadPriority, LeadSource, LeadStage
+from .tag import LeadTag
+from .task import Task, TaskPriority, TaskStatus, TaskType
+from .widget import Widget
 
 __all__ = [
     # Lead models
@@ -10,9 +12,13 @@ __all__ = [
     "LeadPriority",
     "LeadSource",
     "LeadStage",
+    # Tag models
+    "LeadTag",
     # Task models
     "Task",
     "TaskPriority",
     "TaskStatus",
     "TaskType",
+    # Widget models
+    "Widget",
 ]

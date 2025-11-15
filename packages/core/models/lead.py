@@ -66,7 +66,7 @@ class Lead(BaseModel):
     priority: Optional[LeadPriority] = LeadPriority.MEDIUM
     score: Optional[int] = 0
     contact_info: ContactInfo
-    tags: list[str] = []
+    tags: list[str] = Field(default_factory=list)
     product_interest: Optional[str] = None
     estimated_value: Optional[float] = None
     notes: Optional[str] = None
