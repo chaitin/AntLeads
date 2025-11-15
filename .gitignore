@@ -202,8 +202,10 @@ data/processed/*
 *.pth
 *.onnx
 *.pb
-models/
 checkpoints/
+# Ignore root-level models directory, but allow package directories
+/models/
+!packages/
 
 # Documentation build
 docs/_build/
